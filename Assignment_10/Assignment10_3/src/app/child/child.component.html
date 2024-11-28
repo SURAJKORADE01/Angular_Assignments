@@ -1,0 +1,13 @@
+<h2>Inside Child Component.</h2>
+
+<ng-template #trueValue>
+    <h2>{{iValue}} is a Prime number.</h2>
+</ng-template>
+
+<ng-template #falseValue>
+    <h2>{{iValue}} is NOT a Prime number.</h2>
+</ng-template>
+
+<div *ngIf = "bRet ; then trueValue; else falseValue"></div>
+
+<h2>{{"Number of Capital letters are : " + iRet}}</h2>
