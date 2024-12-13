@@ -1,0 +1,76 @@
+<div class = "container-fluid text-center">
+
+    <h2 style="text-align: center;">Marvellous Login Form</h2>
+
+    <form [formGroup] = "MarvellousForm">
+
+        <div style="text-align: center;">
+
+        
+            <div style="color: pink;">
+                <h1 style="text-align: center;">Contact Our</h1>
+            </div>
+
+            <div style="color: black;">
+                <h1 style="text-align: center;">Customer Support Center</h1>
+            </div>
+        
+            <div>
+                <img src="laptop.png" style="width: 300px; height: auto;">
+            </div>
+
+        </div>
+
+        <div style="text-align: center;">
+            <h3>Contact Information</h3>
+        </div>
+
+        <div style="text-align: center;">
+            <h4>Please fill out your contact information below.</h4>
+        </div>
+
+        <div>
+            <div class="form-group">
+                <label style="margin-right: 0.2cm;">First Name <span style="color: red;">*</span>
+                    <input type="text" class="form-control" formControlName = "firstname" placeholder="Enter your first name" required>
+                </label>
+                
+                <label style="margin-right: 0.2cm;">Last Name <span style="color: red;">*</span>
+                <input type="text" class="form-control" formControlName = "lastname" placeholder="Enter your last name" required>
+                </label>
+            </div>
+           
+            <br>
+
+            <div class="form-group">
+                <label style="margin-right: 0.2cm;">Email <span style="color: red;">*</span>
+                    <input type="email" class="form-control" formControlName = "email" placeholder="name@gmail.com">
+            
+                </label>
+            </div>
+            
+            <br>
+
+            <div class="form-group">
+                <label>Phone <span style="color: red;">*</span>
+                    <input type="number" class="form-control" formControlName = "phone">
+                </label>
+            </div>
+            
+            <br>
+
+            <div class="form-group">
+                <label>Address <span style="color: red;">*</span>
+                <input type="text" class="form-control" formControlName = "address" placeholder="Enter address here">
+                </label>
+            </div>
+        
+        </div>
+
+        <br>
+
+        <button type="submit" style="border-radius: 5px; color: black;">Submit</button>
+
+    </form>
+
+</div>

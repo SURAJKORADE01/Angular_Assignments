@@ -1,0 +1,183 @@
+<br>
+<div class = "container-fluid">
+
+    <h1 style="text-align: center;">Marvellous Login Form</h1>
+
+    <form [formGroup] = "MarvellousForm">
+
+        <div style="display: flex; justify-content: center;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+    
+                <div>
+                    <div style="color: pink;">
+                        <h1 style="text-align: center;">Contact Our</h1>
+                    </div>
+                    <div style="color: black;">
+                        <h1>Customer Support Center</h1>
+                    </div>
+                </div>
+    
+                <div>
+                    <img src="laptop.png" style="width: 300px; height: auto;">
+                </div>
+            
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>First Name
+                <span style="color: red;">*</span>
+            </label>
+            <input [class.is-invalid]="MarvellousForm.get('firstname')?.invalid && MarvellousForm.get('firstname')?.touched" type="text" class="form-control" formControlName="firstname" placeholder="Enter your first name">
+            
+            <div *ngIf="MarvellousForm.get('firstname')?.hasError('pattern') && MarvellousForm.get('firstname')?.touched" class="text-danger">
+                Firstname must only contain uppercase or lowercase letters.
+            </div>
+            
+            <div *ngIf = "MarvellousForm.get('firstname')?.hasError('required') && MarvellousForm.get('firstname')?.touched" class="text-danger">
+                First Name is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Last Name
+                <span style="color: red;">*</span>
+            </label>
+            <input [class.is-invalid] = "MarvellousForm.get('lastname')?.invalid && MarvellousForm.get('lastname')?.touched" type="text" class="form-control" formControlName="lastname" placeholder="Enter your last name">
+            
+            <div *ngIf="MarvellousForm.get('lastname')?.hasError('required') && MarvellousForm.get('lastname')?.touched" class="text-danger">
+                Last Name is required.
+            </div>
+
+            <div *ngIf="MarvellousForm.get('lastname')?.hasError('minlength') && MarvellousForm.get('lastname')?.touched" class="text-danger">
+                Last Name must be at least 5 characters long.
+            </div>
+
+            <div *ngIf="MarvellousForm.get('lastname')?.hasError('maxlength') && MarvellousForm.get('lastname')?.touched" class="text-danger">
+                Last Name cannot exceeds 20 characters.
+            </div>
+        </div>
+      
+        <div class="form-group">
+            <label>Email
+                <span style="color: red;">*</span>
+            </label>
+
+            <input [class.is-invalid] = "MarvellousForm.get('email')?.invalid && MarvellousForm.get('email')?.touched" type="email" class="form-control" formControlName="email" placeholder="name@gmail.com">
+            
+            <div *ngIf="MarvellousForm.get('email')?.hasError('pattern') && MarvellousForm.get('email')?.touched" class="text-danger">
+                Invalid email format
+            </div>
+
+        </div>
+        
+        <div class="form-group">
+            <label>Phone
+                <span style="color: red;">*</span>
+            </label>
+            <input [class.is-invalid]="MarvellousForm.get('phone')?.invalid && MarvellousForm.get('phone')?.touched" type="text" class="form-control" formControlName="phone" placeholder="Enter phone number">
+            
+            <div *ngIf="MarvellousForm.get('phone')?.hasError('required') && MarvellousForm.get('phone')?.touched" class="text-danger">
+                Phone number is required.
+            </div>
+            
+            <div *ngIf="MarvellousForm.get('phone')?.hasError('minlength') && MarvellousForm.get('phone')?.touched" class="text-danger">
+                Phone number must be 10 digits long.
+            </div>
+            
+            <div *ngIf="MarvellousForm.get('phone')?.hasError('maxlength') && MarvellousForm.get('phone')?.touched" class="text-danger">
+                Phone number must be 10 digits long.
+            </div>
+        
+            <div *ngIf="MarvellousForm.get('phone')?.hasError('pattern') && MarvellousForm.get('phone')?.touched" class="text-danger">
+                Phone number must contain only digits.
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label>City
+                <span style="color: red;">*</span>
+            </label>
+            
+            <input [class.is-invalid] = "MarvellousForm.get('city')?.invalid && MarvellousForm.get('city')?.touched" type="text" class="form-control" formControlName="city" placeholder="Enter your city name">
+            
+            <div *ngIf="MarvellousForm.get('city')?.hasError('required') && MarvellousForm.get('city')?.touched" class="text-danger">
+                City is required.
+            </div>
+
+            <div *ngIf="MarvellousForm.get('city')?.hasError('minlength') && MarvellousForm.get('city')?.touched" class="text-danger">
+                City Name must be at least 4 characters long.
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label>State
+                <span style="color: red;">*</span>
+            </label>
+            
+            <input [class.is-invalid] = "MarvellousForm.get('state')?.invalid && MarvellousForm.get('state')?.touched" type="text" class="form-control" formControlName="state" readonly (click) = "SelectCity()" placeholder="Select one state">
+
+            <div *ngIf = "ShowOptions">
+                <ul class="list-group">
+                    <li class="list-group-item" (click) = "selectState('Maharashtra')">Maharashtra</li>    
+                    <li class="list-group-item" (click) = "selectState('Gujarat')">Gujarat</li>    
+                    <li class="list-group-item" (click) = "selectState('Uttar Pradesh')">Uttar Pradesh</li>      
+                </ul>
+            </div>
+
+            <div *ngIf="MarvellousForm.get('state')?.hasError('required') && MarvellousForm.get('state')?.touched" class="text-danger">
+                Please select one state.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>ZIP Code
+                <span style="color: red;">*</span>
+            </label>
+            <input [class.is-invalid]="MarvellousForm.get('zip_code')?.invalid && MarvellousForm.get('zip_code')?.touched" type="text" class="form-control" formControlName="zip_code" placeholder="Enter ZIP Code">
+            
+            <div *ngIf="MarvellousForm.get('zip_code')?.hasError('required') && MarvellousForm.get('zip_code')?.touched" class="text-danger">
+                Zip Code is required.
+            </div>
+            
+            <div *ngIf="MarvellousForm.get('zip_code')?.hasError('minlength') && MarvellousForm.get('zip_code')?.touched" class="text-danger">
+                Zip Code must be 6 digits long.
+            </div>
+            
+            <div *ngIf="MarvellousForm.get('zip_code')?.hasError('maxlength') && MarvellousForm.get('zip_code')?.touched" class="text-danger">
+                Zip Code must be 6 digits long.
+            </div>
+        
+            <div *ngIf="MarvellousForm.get('zip_code')?.hasError('pattern') && MarvellousForm.get('zip_code')?.touched" class="text-danger">
+                Zip Code must contain only digits.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Enter the Comment
+                <span style="color: red;">*</span>
+            </label>
+            
+            <input [class.is-invalid] = "MarvellousForm.get('comment')?.invalid && MarvellousForm.get('comment')?.touched" type="text" class="form-control" formControlName="comment" placeholder="Enter comment here">
+            
+            <div *ngIf="MarvellousForm.get('comment')?.hasError('required') && MarvellousForm.get('comment')?.touched" class="text-danger">
+                Comment is required.
+            </div>
+
+            <div *ngIf="MarvellousForm.get('comment')?.hasError('minlength') && MarvellousForm.get('comment')?.touched" class="text-danger">
+                Comment must contain at least 30 characters.
+            </div>
+
+        </div>
+      
+        <br>
+
+        <div style="text-align: center;" >
+            <button type="submit" class="btn" style="background-color: darksalmon;" [disabled] = "MarvellousForm.invalid">SUBMIT FORM</button>
+        </div>
+
+      </form>
+
+</div>
